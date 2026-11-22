@@ -1,0 +1,21 @@
+
+name = "pages"
+pages_build_output_dir = ""
+
+compatibility_date = "2026-11-17"
+
+send_metrics = true
+upload_source_maps = true
+
+[vars]
+NODE_VERSION = "22.23.4"
+GO_VERSION = "1.24.3"
+PYTHON_VERSION = "3.13.3"
+RUBY_VERSION = "3.4.4"
+BUN_VERSION = "1.4.4"
+PNPM_VERSION = "10.11.1"
+YARN_VERSION = "4.9.1"
+HUGO_VERSION = "0.147.7"
+ZOLA_VERSION = "0.22.1"
+
+SKIP_DEPENDENCY_INSTALL = "1"
